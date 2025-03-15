@@ -1,0 +1,106 @@
+[0.005s] Invoking command in '/home/matt/robot_ws/build/path_publisher': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/matt/create3_examples_ws/install/create3_teleop:/home/matt/create3_examples_ws/install/create3_examples_py /usr/bin/cmake /home/matt/robot_ws/src/path_publisher -DCMAKE_INSTALL_PREFIX=/home/matt/robot_ws/install/path_publisher
+[0.028s] -- The C compiler identification is GNU 11.4.0
+[0.051s] -- The CXX compiler identification is GNU 11.4.0
+[0.053s] -- Detecting C compiler ABI info
+[0.081s] -- Detecting C compiler ABI info - done
+[0.084s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.085s] -- Detecting C compile features
+[0.085s] -- Detecting C compile features - done
+[0.086s] -- Detecting CXX compiler ABI info
+[0.118s] -- Detecting CXX compiler ABI info - done
+[0.122s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.122s] -- Detecting CXX compile features
+[0.122s] -- Detecting CXX compile features - done
+[0.124s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.189s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.231s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.253s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.256s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.261s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.267s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.274s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.297s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.299s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.336s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.350s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.370s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.375s] -- Looking for pthread.h
+[0.405s] -- Looking for pthread.h - found
+[0.405s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.434s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.434s] -- Found Threads: TRUE  
+[0.459s] -- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.472s] -- Found rviz_visual_tools: 4.1.4 (/opt/ros/humble/share/rviz_visual_tools/cmake)
+[0.533s] -- Setting assimp_DIR to: '/opt/ros/humble/share/rviz_assimp_vendor/cmake/../../../opt/rviz_assimp_vendor/lib/cmake/assimp-4.1'
+[0.538s] -- Setting OGRE_DIR to: '/opt/ros/humble/share/rviz_ogre_vendor/cmake/../../../opt/rviz_ogre_vendor/lib/OGRE/cmake'
+[0.538s] -- Found OGRE
+[0.538s] --   static     : OFF
+[0.538s] --   components : HLMS;MeshLodGenerator;Overlay;Paging;Property;RTShaderSystem;Terrain;Volume
+[0.538s] --   plugins    : Plugin_BSPSceneManager;Plugin_OctreeSceneManager;Plugin_PCZSceneManager;Plugin_ParticleFX;RenderSystem_GL;RenderSystem_GL3Plus;Codec_STBI
+[0.538s] --   media      : /opt/ros/humble/opt/rviz_ogre_vendor/share/OGRE/Media
+[0.539s] -- OGRE_LIBRARIES: OgreHLMS;OgreMeshLodGenerator;OgreOverlay;OgrePaging;OgreProperty;OgreRTShaderSystem;OgreTerrain;OgreVolume;OgreMain
+[0.539s] -- OGRE_LIBRARY_DIRS: /opt/ros/humble/opt/rviz_ogre_vendor/lib
+[0.539s] -- OGRE_PLUGINS: Plugin_BSPSceneManager;Plugin_OctreeSceneManager;Plugin_PCZSceneManager;Plugin_ParticleFX;RenderSystem_GL;RenderSystem_GL3Plus;Codec_STBI
+[0.539s] -- OGRE_PLUGIN_DIR: /opt/ros/humble/opt/rviz_ogre_vendor/lib/OGRE
+[0.539s] -- rviz_ogre_vendor::OgreOverlay for IMPORTED_LOCATION_RELEASE: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreOverlay.so
+[0.539s] -- rviz_ogre_vendor::OgreOverlay for IMPORTED_LOCATION_DEBUG: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreOverlay.so
+[0.539s] -- rviz_ogre_vendor::OgreMain for IMPORTED_LOCATION_RELEASE: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreMain.so
+[0.539s] -- rviz_ogre_vendor::OgreMain for IMPORTED_LOCATION_DEBUG: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreMain.so
+[0.539s] -- Could not find freeimage library
+[0.548s] -- Found ZLIB: /usr/lib/aarch64-linux-gnu/libz.so (found version "1.2.11") 
+[0.550s] -- Found OpenGL: /usr/lib/aarch64-linux-gnu/libOpenGL.so   
+[0.588s] -- Found X11: /usr/include   
+[0.588s] -- Looking for XOpenDisplay in /usr/lib/aarch64-linux-gnu/libX11.so;/usr/lib/aarch64-linux-gnu/libXext.so
+[0.622s] -- Looking for XOpenDisplay in /usr/lib/aarch64-linux-gnu/libX11.so;/usr/lib/aarch64-linux-gnu/libXext.so - found
+[0.622s] -- Looking for gethostbyname
+[0.651s] -- Looking for gethostbyname - found
+[0.651s] -- Looking for connect
+[0.680s] -- Looking for connect - found
+[0.680s] -- Looking for remove
+[0.712s] -- Looking for remove - found
+[0.712s] -- Looking for shmat
+[0.738s] -- Looking for shmat - found
+[0.738s] -- Looking for IceConnectionNumber in ICE
+[0.764s] -- Looking for IceConnectionNumber in ICE - found
+[0.794s] -- library: /usr/lib/aarch64-linux-gnu/libcurl.so
+[0.815s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.815s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[0.892s] -- Found tf2_eigen: 0.25.12 (/opt/ros/humble/share/tf2_eigen/cmake)
+[0.894s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.929s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.929s] -- Configured cppcheck include dirs: 
+[0.929s] -- Configured cppcheck exclude dirs and/or files: 
+[0.930s] -- Added test 'lint_cmake' to check CMake code style
+[0.930s] -- Added test 'uncrustify' to check C / C++ code style
+[0.930s] -- Configured uncrustify additional arguments: 
+[0.930s] -- Added test 'xmllint' to check XML markup files
+[0.931s] -- Configuring done
+[0.942s] -- Generating done
+[0.945s] -- Build files have been written to: /home/matt/robot_ws/build/path_publisher
+[0.952s] Invoked command in '/home/matt/robot_ws/build/path_publisher' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/matt/create3_examples_ws/install/create3_teleop:/home/matt/create3_examples_ws/install/create3_examples_py /usr/bin/cmake /home/matt/robot_ws/src/path_publisher -DCMAKE_INSTALL_PREFIX=/home/matt/robot_ws/install/path_publisher
+[0.952s] Invoking command in '/home/matt/robot_ws/build/path_publisher': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/matt/create3_examples_ws/install/create3_teleop:/home/matt/create3_examples_ws/install/create3_examples_py /usr/bin/cmake --build /home/matt/robot_ws/build/path_publisher -- -j10 -l10
+[0.968s] [35m[1mConsolidate compiler generated dependencies of target path_publisher[0m
+[0.976s] [ 50%] [32mBuilding CXX object CMakeFiles/path_publisher.dir/src/path_publisher.cpp.o[0m
+[4.238s] [100%] [32m[1mLinking CXX executable path_publisher[0m
+[4.511s] [100%] Built target path_publisher
+[4.515s] Invoked command in '/home/matt/robot_ws/build/path_publisher' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/matt/create3_examples_ws/install/create3_teleop:/home/matt/create3_examples_ws/install/create3_examples_py /usr/bin/cmake --build /home/matt/robot_ws/build/path_publisher -- -j10 -l10
+[4.519s] Invoking command in '/home/matt/robot_ws/build/path_publisher': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/matt/create3_examples_ws/install/create3_teleop:/home/matt/create3_examples_ws/install/create3_examples_py /usr/bin/cmake --install /home/matt/robot_ws/build/path_publisher
+[4.521s] -- Install configuration: ""
+[4.521s] -- Installing: /home/matt/robot_ws/install/path_publisher/lib/path_publisher/path_publisher
+[4.522s] -- Set runtime path of "/home/matt/robot_ws/install/path_publisher/lib/path_publisher/path_publisher" to ""
+[4.522s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/ament_index/resource_index/package_run_dependencies/path_publisher
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/ament_index/resource_index/parent_prefix_path/path_publisher
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/environment/ament_prefix_path.sh
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/environment/ament_prefix_path.dsv
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/environment/path.sh
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/environment/path.dsv
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/local_setup.bash
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/local_setup.sh
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/local_setup.zsh
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/local_setup.dsv
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/package.dsv
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/ament_index/resource_index/packages/path_publisher
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/cmake/path_publisherConfig.cmake
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/cmake/path_publisherConfig-version.cmake
+[4.523s] -- Installing: /home/matt/robot_ws/install/path_publisher/share/path_publisher/package.xml
+[4.524s] Invoked command in '/home/matt/robot_ws/build/path_publisher' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/matt/create3_examples_ws/install/create3_teleop:/home/matt/create3_examples_ws/install/create3_examples_py /usr/bin/cmake --install /home/matt/robot_ws/build/path_publisher

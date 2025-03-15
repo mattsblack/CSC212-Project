@@ -1,0 +1,145 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found rviz_visual_tools: 4.1.4 (/opt/ros/humble/share/rviz_visual_tools/cmake)
+-- Setting assimp_DIR to: '/opt/ros/humble/share/rviz_assimp_vendor/cmake/../../../opt/rviz_assimp_vendor/lib/cmake/assimp-4.1'
+-- Setting OGRE_DIR to: '/opt/ros/humble/share/rviz_ogre_vendor/cmake/../../../opt/rviz_ogre_vendor/lib/OGRE/cmake'
+-- Found OGRE
+--   static     : OFF
+--   components : HLMS;MeshLodGenerator;Overlay;Paging;Property;RTShaderSystem;Terrain;Volume
+--   plugins    : Plugin_BSPSceneManager;Plugin_OctreeSceneManager;Plugin_PCZSceneManager;Plugin_ParticleFX;RenderSystem_GL;RenderSystem_GL3Plus;Codec_STBI
+--   media      : /opt/ros/humble/opt/rviz_ogre_vendor/share/OGRE/Media
+-- OGRE_LIBRARIES: OgreHLMS;OgreMeshLodGenerator;OgreOverlay;OgrePaging;OgreProperty;OgreRTShaderSystem;OgreTerrain;OgreVolume;OgreMain
+-- OGRE_LIBRARY_DIRS: /opt/ros/humble/opt/rviz_ogre_vendor/lib
+-- OGRE_PLUGINS: Plugin_BSPSceneManager;Plugin_OctreeSceneManager;Plugin_PCZSceneManager;Plugin_ParticleFX;RenderSystem_GL;RenderSystem_GL3Plus;Codec_STBI
+-- OGRE_PLUGIN_DIR: /opt/ros/humble/opt/rviz_ogre_vendor/lib/OGRE
+-- rviz_ogre_vendor::OgreOverlay for IMPORTED_LOCATION_RELEASE: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreOverlay.so
+-- rviz_ogre_vendor::OgreOverlay for IMPORTED_LOCATION_DEBUG: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreOverlay.so
+-- rviz_ogre_vendor::OgreMain for IMPORTED_LOCATION_RELEASE: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreMain.so
+-- rviz_ogre_vendor::OgreMain for IMPORTED_LOCATION_DEBUG: /opt/ros/humble/opt/rviz_ogre_vendor/lib/libOgreMain.so
+-- Could not find freeimage library
+-- Found ZLIB: /usr/lib/aarch64-linux-gnu/libz.so (found version "1.2.11") 
+-- Found OpenGL: /usr/lib/aarch64-linux-gnu/libOpenGL.so   
+-- Found X11: /usr/include   
+-- Looking for XOpenDisplay in /usr/lib/aarch64-linux-gnu/libX11.so;/usr/lib/aarch64-linux-gnu/libXext.so
+-- Looking for XOpenDisplay in /usr/lib/aarch64-linux-gnu/libX11.so;/usr/lib/aarch64-linux-gnu/libXext.so - found
+-- Looking for gethostbyname
+-- Looking for gethostbyname - found
+-- Looking for connect
+-- Looking for connect - found
+-- Looking for remove
+-- Looking for remove - found
+-- Looking for shmat
+-- Looking for shmat - found
+-- Looking for IceConnectionNumber in ICE
+-- Looking for IceConnectionNumber in ICE - found
+-- library: /usr/lib/aarch64-linux-gnu/libcurl.so
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found tf2_eigen: 0.25.12 (/opt/ros/humble/share/tf2_eigen/cmake)
+-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/matt/robot_ws/build/path_publisher
+[35m[1mConsolidate compiler generated dependencies of target path_publisher[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/path_publisher.dir/src/path_publisher.cpp.o[0m
+[01m[K/home/matt/robot_ws/src/path_publisher/src/path_publisher.cpp:[m[K In member function ‘[01m[Kvoid PathPublisher::odomCallback(nav_msgs::msg::Odometry_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/matt/robot_ws/src/path_publisher/src/path_publisher.cpp:42:31:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Krviz_visual_tools::RvizVisualTools::publishPath(std::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >&, rviz_visual_tools::Colors, rviz_visual_tools::Scales)[m[K’
+   42 |     [01;31m[Kvisual_tools_->publishPath(path_, rviz_visual_tools::LIME_GREEN, rviz_visual_tools::SMALL)[m[K;
+      |     [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/matt/robot_ws/src/path_publisher/src/path_publisher.cpp:4[m[K:
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:804:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const std::vector<geometry_msgs::msg::Pose_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Pose_<std::allocator<void> > > >&, rviz_visual_tools::Colors, rviz_visual_tools::Scales, const string&)[m[K’
+  804 |   bool [01;36m[KpublishPath[m[K(const std::vector<geometry_msgs::msg::Pose>& path, Colors color = RED,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:804:65:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst std::vector<geometry_msgs::msg::Pose_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Pose_<std::allocator<void> > > >&[m[K’
+  804 | ol publishPath([01;36m[Kconst std::vector<geometry_msgs::msg::Pose>& path[m[K, Colors color = RED,
+      |                [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:806:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const std::vector<geometry_msgs::msg::Point_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Point_<std::allocator<void> > > >&, rviz_visual_tools::Colors, rviz_visual_tools::Scales, const string&)[m[K’
+  806 |   bool [01;36m[KpublishPath[m[K(const std::vector<geometry_msgs::msg::Point>& path, Colors color, Scales scale,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:806:66:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst std::vector<geometry_msgs::msg::Point_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Point_<std::allocator<void> > > >&[m[K’
+  806 | l publishPath([01;36m[Kconst std::vector<geometry_msgs::msg::Point>& path[m[K, Colors color, Scales scale,
+      |               [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:808:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const vector_Isometry3d&, rviz_visual_tools::Colors, rviz_visual_tools::Scales, const string&)[m[K’
+  808 |   bool [01;36m[KpublishPath[m[K(const EigenSTL::vector_Isometry3d& path, Colors color, Scales scale,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:808:55:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst vector_Isometry3d&[m[K’ {aka ‘[01m[Kconst std::vector<Eigen::Transform<double, 3, 1>, Eigen::aligned_allocator<Eigen::Transform<double, 3, 1> > >&[m[K’}
+  808 |   bool publishPath([01;36m[Kconst EigenSTL::vector_Isometry3d& path[m[K, Colors color, Scales scale,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:810:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const vector_Vector3d&, rviz_visual_tools::Colors, rviz_visual_tools::Scales, const string&)[m[K’
+  810 |   bool [01;36m[KpublishPath[m[K(const EigenSTL::vector_Vector3d& path, Colors color, Scales scale,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:810:53:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst vector_Vector3d&[m[K’ {aka ‘[01m[Kconst std::vector<Eigen::Matrix<double, 3, 1>, Eigen::aligned_allocator<Eigen::Matrix<double, 3, 1> > >&[m[K’}
+  810 |   bool publishPath([01;36m[Kconst EigenSTL::vector_Vector3d& path[m[K, Colors color, Scales scale,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:812:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const std::vector<geometry_msgs::msg::Point_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Point_<std::allocator<void> > > >&, rviz_visual_tools::Colors, double, const string&)[m[K’
+  812 |   bool [01;36m[KpublishPath[m[K(const std::vector<geometry_msgs::msg::Point>& path, Colors color = RED,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:812:66:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst std::vector<geometry_msgs::msg::Point_<std::allocator<void> >, std::allocator<geometry_msgs::msg::Point_<std::allocator<void> > > >&[m[K’
+  812 | l publishPath([01;36m[Kconst std::vector<geometry_msgs::msg::Point>& path[m[K, Colors color = RED,
+      |               [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:814:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const vector_Vector3d&, rviz_visual_tools::Colors, double, const string&)[m[K’
+  814 |   bool [01;36m[KpublishPath[m[K(const EigenSTL::vector_Vector3d& path, Colors color = RED, double radius = 0.01,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:814:53:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst vector_Vector3d&[m[K’ {aka ‘[01m[Kconst std::vector<Eigen::Matrix<double, 3, 1>, Eigen::aligned_allocator<Eigen::Matrix<double, 3, 1> > >&[m[K’}
+  814 |   bool publishPath([01;36m[Kconst EigenSTL::vector_Vector3d& path[m[K, Colors color = RED, double radius = 0.01,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:816:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const vector_Isometry3d&, rviz_visual_tools::Colors, double, const string&)[m[K’
+  816 |   bool [01;36m[KpublishPath[m[K(const EigenSTL::vector_Isometry3d& path, Colors color = RED,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:816:55:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst vector_Isometry3d&[m[K’ {aka ‘[01m[Kconst std::vector<Eigen::Transform<double, 3, 1>, Eigen::aligned_allocator<Eigen::Transform<double, 3, 1> > >&[m[K’}
+  816 |   bool publishPath([01;36m[Kconst EigenSTL::vector_Isometry3d& path[m[K, Colors color = RED,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:828:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const vector_Vector3d&, const std::vector<rviz_visual_tools::Colors>&, double, const string&)[m[K’
+  828 |   bool [01;36m[KpublishPath[m[K(const EigenSTL::vector_Vector3d& path, const std::vector<Colors>& colors,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:828:53:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst vector_Vector3d&[m[K’ {aka ‘[01m[Kconst std::vector<Eigen::Matrix<double, 3, 1>, Eigen::aligned_allocator<Eigen::Matrix<double, 3, 1> > >&[m[K’}
+  828 |   bool publishPath([01;36m[Kconst EigenSTL::vector_Vector3d& path[m[K, const std::vector<Colors>& colors,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:831:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kbool rviz_visual_tools::RvizVisualTools::publishPath(const vector_Vector3d&, const std::vector<std_msgs::msg::ColorRGBA_<std::allocator<void> >, std::allocator<std_msgs::msg::ColorRGBA_<std::allocator<void> > > >&, double, const string&)[m[K’
+  831 |   bool [01;36m[KpublishPath[m[K(const EigenSTL::vector_Vector3d& path,
+      |        [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rviz_visual_tools/rviz_visual_tools.hpp:831:53:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kstd::vector<geometry_msgs::msg::PoseStamped_<std::allocator<void> > >[m[K’ to ‘[01m[Kconst vector_Vector3d&[m[K’ {aka ‘[01m[Kconst std::vector<Eigen::Matrix<double, 3, 1>, Eigen::aligned_allocator<Eigen::Matrix<double, 3, 1> > >&[m[K’}
+  831 |   bool publishPath([01;36m[Kconst EigenSTL::vector_Vector3d& path[m[K,
+      |                    [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+gmake[2]: *** [CMakeFiles/path_publisher.dir/build.make:76: CMakeFiles/path_publisher.dir/src/path_publisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/path_publisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
