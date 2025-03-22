@@ -3,5 +3,5 @@
 robot_ws/build/
 robot_ws/log/
 
-**/build/
-**/log/
+**/build/**
+**/log/**
