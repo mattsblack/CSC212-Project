@@ -1,0 +1,10 @@
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/uninstall.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/path_publisher_uninstall.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/path_publisher.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/test.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/edit_cache.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/rebuild_cache.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/list_install_components.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/install.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/install/local.dir
+/home/matt/CSC212-Roomba-Project/build/path_publisher/CMakeFiles/install/strip.dir

@@ -1,0 +1,3 @@
+[console_scripts]
+create3_mapper = create3_mapper.create3_mapper:main
+

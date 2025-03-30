@@ -1,0 +1,16 @@
+/home/matt/CSC212-Roomba-Project/install/path_publisher/lib/path_publisher/path_publisher
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/ament_index/resource_index/package_run_dependencies/path_publisher
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/ament_index/resource_index/parent_prefix_path/path_publisher
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/environment/ament_prefix_path.sh
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/environment/ament_prefix_path.dsv
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/environment/path.sh
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/environment/path.dsv
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/local_setup.bash
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/local_setup.sh
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/local_setup.zsh
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/local_setup.dsv
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/package.dsv
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/ament_index/resource_index/packages/path_publisher
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/cmake/path_publisherConfig.cmake
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/cmake/path_publisherConfig-version.cmake
+/home/matt/CSC212-Roomba-Project/install/path_publisher/share/path_publisher/package.xml

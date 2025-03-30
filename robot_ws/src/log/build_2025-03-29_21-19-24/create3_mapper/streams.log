@@ -1,0 +1,37 @@
+[0.248s] Invoking command in '/home/matt/CSC212-Roomba-Project/robot_ws/src/create3_mapper': PYTHONPATH=/home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/create3_mapper build --build-base /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build install --record /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/install.log --single-version-externally-managed install_data
+[0.339s] running egg_info
+[0.339s] creating ../build/create3_mapper/create3_mapper.egg-info
+[0.339s] writing ../build/create3_mapper/create3_mapper.egg-info/PKG-INFO
+[0.339s] writing dependency_links to ../build/create3_mapper/create3_mapper.egg-info/dependency_links.txt
+[0.339s] writing entry points to ../build/create3_mapper/create3_mapper.egg-info/entry_points.txt
+[0.339s] writing requirements to ../build/create3_mapper/create3_mapper.egg-info/requires.txt
+[0.339s] writing top-level names to ../build/create3_mapper/create3_mapper.egg-info/top_level.txt
+[0.339s] writing manifest file '../build/create3_mapper/create3_mapper.egg-info/SOURCES.txt'
+[0.340s] reading manifest file '../build/create3_mapper/create3_mapper.egg-info/SOURCES.txt'
+[0.340s] writing manifest file '../build/create3_mapper/create3_mapper.egg-info/SOURCES.txt'
+[0.340s] running build
+[0.340s] running build_py
+[0.340s] creating /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build
+[0.340s] creating /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build/lib
+[0.340s] creating /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build/lib/create3_mapper
+[0.341s] copying create3_mapper/create3_mapper.py -> /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build/lib/create3_mapper
+[0.341s] copying create3_mapper/__init__.py -> /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build/lib/create3_mapper
+[0.341s] running install
+[0.341s] running install_lib
+[0.341s] creating /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages/create3_mapper
+[0.341s] copying /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build/lib/create3_mapper/create3_mapper.py -> /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages/create3_mapper
+[0.341s] copying /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build/lib/create3_mapper/__init__.py -> /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages/create3_mapper
+[0.341s] byte-compiling /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages/create3_mapper/create3_mapper.py to create3_mapper.cpython-310.pyc
+[0.342s] byte-compiling /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages/create3_mapper/__init__.py to __init__.cpython-310.pyc
+[0.342s] running install_data
+[0.342s] copying package.xml -> /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/share/create3_mapper
+[0.342s] creating /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/share/create3_mapper/launch
+[0.343s] copying launch/rviz_launch.py -> /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/share/create3_mapper/launch
+[0.343s] creating /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/share/create3_mapper/rviz
+[0.343s] copying rviz/create3_mapper.rviz -> /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/share/create3_mapper/rviz
+[0.343s] running install_egg_info
+[0.343s] Copying ../build/create3_mapper/create3_mapper.egg-info to /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages/create3_mapper-0.0.1-py3.10.egg-info
+[0.344s] running install_scripts
+[0.351s] Installing create3_mapper script to /home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/create3_mapper
+[0.352s] writing list of installed files to '/home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/install.log'
+[0.361s] Invoked command in '/home/matt/CSC212-Roomba-Project/robot_ws/src/create3_mapper' returned '0': PYTHONPATH=/home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/matt/CSC212-Roomba-Project/robot_ws/src/install/create3_mapper/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/create3_mapper build --build-base /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/build install --record /home/matt/CSC212-Roomba-Project/robot_ws/src/build/create3_mapper/install.log --single-version-externally-managed install_data
