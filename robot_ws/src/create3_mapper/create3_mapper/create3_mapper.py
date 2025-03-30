@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Monkey-patch numpy to restore np.float if missing, before any other imports.
+# Monkey-patch numpy to restore np.float and np.maximum_sctype if missing.
 import numpy as np
 if not hasattr(np, "float"):
     np.float = float
@@ -16,23 +16,26 @@ if not hasattr(np, "maximum_sctype"):
 import math
 import rclpy
 from rclpy.node import Node
-from nav_msgs.msg import Odometry
-from geometry_msgs.msg import PolygonStamped, Point32, TransformStamped
+from nav_msgs.msg import Odometry, OccupancyGrid
+from geometry_msgs.msg import TransformStamped, Point, PolygonStamped, Point32
+from visualization_msgs.msg import Marker
 from builtin_interfaces.msg import Time
 from tf2_ros import TransformBroadcaster, Buffer, TransformListener
 from rclpy.qos import QoSProfile, ReliabilityPolicy
 import tf_transformations
-import numpy as np  # re-import if needed
+import numpy as np
 
 class Create3Mapper(Node):
     def __init__(self):
         super().__init__('create3_mapper')
+        # Store start time (nanoseconds)
+        self.start_time = self.get_clock().now().nanoseconds
 
-        # Create a tf buffer and listener to get transforms (e.g., map->odom) from SLAM Toolbox.
+        # TF: set up buffer and listener to get map->odom (published by SLAM Toolbox)
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
-        # Use a best-effort QoS for the /odom subscription.
+        # Subscribe to odometry (best effort to match the robot's publisher)
         odom_qos = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
         self.odom_sub = self.create_subscription(
             Odometry,
@@ -40,75 +43,86 @@ class Create3Mapper(Node):
             self.odom_callback,
             odom_qos
         )
+        # Subscribe to /map occupancy grid to compute coverage.
+        self.map_sub = self.create_subscription(
+            OccupancyGrid,
+            '/map',
+            self.map_callback,
+            10
+        )
+        self.latest_map = None
 
-        # Publisher for a PolygonStamped that traces the robot’s path.
-        self.path_pub = self.create_publisher(PolygonStamped, 'robot_path_polygon', 10)
-
-        # Storage for path points.
+        # Publisher for a Marker that draws the robot's path as a line strip.
+        self.marker_pub = self.create_publisher(Marker, 'robot_path_marker', 10)
         self.path_points = []
 
-        # Create a TransformBroadcaster for publishing our computed transforms.
+        # Transform broadcaster for publishing computed transforms.
         self.br = TransformBroadcaster(self)
 
+        # Timer to output coverage stats every 5 seconds.
+        self.timer_output = self.create_timer(5.0, self.print_coverage)
+
     def odom_callback(self, msg: Odometry):
-        """
-        Process incoming odometry:
-          - Append the (x,y) from odom->base_footprint to the path.
-          - Optionally clear the path if a large jump is detected.
-          - Publish the path as a PolygonStamped.
-          - Compute and broadcast transforms from map->base_footprint and map->laser_frame.
-        """
-        # Extract the odom->base_footprint pose from odometry.
+        # Extract position (assumed to be odom->base_footprint) from odometry.
         x = msg.pose.pose.position.x
         y = msg.pose.pose.position.y
 
-        # Detect large jumps to avoid unwanted connecting lines.
+        # If a large jump is detected (e.g. when resetting), clear the path.
         if self.path_points:
             last_x, last_y = self.path_points[-1]
-            dist = math.hypot(x - last_x, y - last_y)
-            if dist > 1.0:
-                self.get_logger().info("Large jump detected (%.2f m); resetting path." % dist)
+            if math.hypot(x - last_x, y - last_y) > 1.0:
+                self.get_logger().info("Large jump detected; resetting path.")
                 self.path_points = []
         self.path_points.append((x, y))
         if len(self.path_points) > 2000:
             self.path_points.pop(0)
 
-        # Publish the path as a PolygonStamped in the 'map' frame.
-        self.publish_path_polygon(msg.header.stamp)
-
-        # Compute and broadcast transforms from map->base_footprint and map->laser_frame.
+        # Publish the line strip marker (robot path) using the latest odom header stamp.
+        self.publish_path_marker(msg.header.stamp)
+        # Compute and broadcast transforms: map->base_footprint and map->laser_frame.
         self.publish_dynamic_transforms(msg)
 
-    def publish_path_polygon(self, stamp: Time):
+    def map_callback(self, msg: OccupancyGrid):
+        self.latest_map = msg
+
+    def publish_path_marker(self, stamp: Time):
         if not self.path_points:
             return
 
-        poly = PolygonStamped()
-        poly.header.stamp = stamp
-        poly.header.frame_id = 'map'  # Publish the polygon in the map frame.
+        marker = Marker()
+        marker.header.stamp = stamp
+        marker.header.frame_id = 'map'  # Path will be shown in the map frame.
+        marker.ns = 'robot_path'
+        marker.id = 0
+        marker.type = Marker.LINE_STRIP
+        marker.action = Marker.ADD
+        marker.scale.x = 0.03  # Line width.
+        # Set color to lime green.
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
 
         for (px, py) in self.path_points:
-            pt = Point32()
-            pt.x = float(px)
-            pt.y = float(py)
-            pt.z = 0.0
-            poly.polygon.points.append(pt)
+            p = Point()
+            p.x = px
+            p.y = py
+            p.z = 0.0
+            marker.points.append(p)
 
-        self.path_pub.publish(poly)
+        self.marker_pub.publish(marker)
 
     def publish_dynamic_transforms(self, odom_msg: Odometry):
-        """
-        Look up the transform from map->odom (from SLAM Toolbox) and combine it with odom->base_footprint
-        from the odometry message to compute map->base_footprint. Then, publish that transform and compute map->laser_frame.
-        """
         try:
             now = rclpy.time.Time()
-            t_map_odom = self.tf_buffer.lookup_transform('map', 'odom', now, timeout=rclpy.duration.Duration(seconds=0.1))
+            t_map_odom = self.tf_buffer.lookup_transform(
+                'map', 'odom', now, timeout=rclpy.duration.Duration(seconds=0.1)
+            )
         except Exception as e:
-            self.get_logger().warn('Could not lookup transform from map to odom: %s' % str(e))
+            self.get_logger().warn("Could not lookup transform from map to odom: %s" % str(e))
             return
 
-        # Build T_map_odom from the lookup.
+        # Build transformation matrix for map->odom.
         map_to_odom_translation = [
             t_map_odom.transform.translation.x,
             t_map_odom.transform.translation.y,
@@ -123,7 +137,7 @@ class Create3Mapper(Node):
         T_map_odom = tf_transformations.quaternion_matrix(map_to_odom_quat)
         T_map_odom[0:3, 3] = map_to_odom_translation
 
-        # Get the odom->base_footprint transform from the odometry message.
+        # Get odom->base_footprint transform from odometry message.
         odom_to_base_translation = [
             odom_msg.pose.pose.position.x,
             odom_msg.pose.pose.position.y,
@@ -140,12 +154,10 @@ class Create3Mapper(Node):
 
         # Compose: T_map_base = T_map_odom * T_odom_base.
         T_map_base = np.dot(T_map_odom, T_odom_base)
-
-        # Extract translation and rotation.
         map_base_translation = T_map_base[0:3, 3]
         map_base_quat = tf_transformations.quaternion_from_matrix(T_map_base)
 
-        # Broadcast transform from map to base_footprint.
+        # Broadcast transform: map -> base_footprint.
         t_mb = TransformStamped()
         t_mb.header.stamp = odom_msg.header.stamp
         t_mb.header.frame_id = 'map'
@@ -159,12 +171,11 @@ class Create3Mapper(Node):
         t_mb.transform.rotation.w = map_base_quat[3]
         self.br.sendTransform(t_mb)
 
-        # Compute map->laser_frame using a static transform from base_footprint to laser_frame.
-        # Adjust T_base_laser if the laser is offset from base_footprint.
+        # Compute map->laser_frame using a static transform from base_footprint.
+        # Adjust T_base_laser if your laser is offset relative to base_footprint.
         T_base_laser = np.eye(4)
-        # Example: if the laser is 0.1 m forward relative to base_footprint, uncomment the next line:
+        # Example: if the laser is 0.1 m forward relative to base_footprint, uncomment:
         # T_base_laser[0, 3] = 0.1
-
         T_map_laser = np.dot(T_map_base, T_base_laser)
         map_laser_translation = T_map_laser[0:3, 3]
         map_laser_quat = tf_transformations.quaternion_from_matrix(T_map_laser)
@@ -181,6 +192,33 @@ class Create3Mapper(Node):
         t_ml.transform.rotation.z = map_laser_quat[2]
         t_ml.transform.rotation.w = map_laser_quat[3]
         self.br.sendTransform(t_ml)
+
+    def print_coverage(self):
+        # Compute elapsed duration (in seconds).
+        current_time_ns = self.get_clock().now().nanoseconds
+        duration = (current_time_ns - self.start_time) / 1e9
+
+        # Compute distance covered along the path.
+        distance = 0.0
+        if len(self.path_points) >= 2:
+            for i in range(1, len(self.path_points)):
+                dx = self.path_points[i][0] - self.path_points[i-1][0]
+                dy = self.path_points[i][1] - self.path_points[i-1][1]
+                distance += math.hypot(dx, dy)
+
+        # Compute map coverage percentage using the latest occupancy grid.
+        coverage = 0.0
+        if self.latest_map is not None:
+            data = self.latest_map.data
+            free = sum(1 for v in data if v == 0)
+            known = sum(1 for v in data if v != -1)
+            if known > 0:
+                coverage = (free / known) * 100.0
+
+        self.get_logger().info(
+            "Duration: %.1f s, Map Coverage: %.1f%%, Distance Covered: %.2f m" %
+            (duration, coverage, distance)
+        )
 
 def main(args=None):
     rclpy.init(args=args)

@@ -10,47 +10,51 @@ Panels:
 
 Visualization Manager:
   Global Options:
-    Background Color: 48; 48; 48
     Fixed Frame: map
+    Background Color: 48; 48; 48
     Frame Rate: 20
   Displays:
-    - Class: rviz_default_plugins/TF
+    - Name: TF
+      Class: rviz_default_plugins/TF
       Enabled: true
-      Name: TF
-    - Class: rviz_default_plugins/Grid
+      Show Arrows: true
+      Show Axes: true
+    - Name: Grid
+      Class: rviz_default_plugins/Grid
       Enabled: true
-      Name: Grid
       Cell Size: 0.05
       Plane Cell Count: 100
-    - Class: rviz_default_plugins/Map
+    - Name: Map
+      Class: rviz_default_plugins/Map
       Enabled: true
-      Name: Map
       Topic: /map
       Alpha: 0.7
-    - Class: rviz_default_plugins/LaserScan
+    - Name: LaserScan
+      Class: rviz_default_plugins/LaserScan
       Enabled: true
-      Name: LaserScan
       Topic: /scan
-      Color Transformer: Intensity
       Size (Pixels): 3
-    - Class: rviz_default_plugins/Polygon
+      Color Transformer: Intensity
+    - Name: RobotPathMarker
+      Class: rviz_default_plugins/Marker
       Enabled: true
-      Name: Robot Path
-      Topic: /robot_path_polygon
+      Topic: /robot_path_marker
   Tools:
-    - Class: rviz_default_plugins/Interact
-    - Class: rviz_default_plugins/Select
-    - Class: rviz_default_plugins/MoveCamera
-    - Class: rviz_default_plugins/SetInitialPose
+    - Name: Interact
+      Class: rviz_default_plugins/Interact
+    - Name: MoveCamera
+      Class: rviz_default_plugins/MoveCamera
+    - Name: Select
+      Class: rviz_default_plugins/Select
+    - Name: SetInitialPose
+      Class: rviz_default_plugins/SetInitialPose
       Topic: /initialpose
-    - Class: rviz_default_plugins/SetGoal
+    - Name: SetGoal
+      Class: rviz_default_plugins/SetGoal
       Topic: /goal_pose
-    - Class: rviz_default_plugins/Measure
-      Line color: 128; 128; 0
-    - Class: rviz_default_plugins/FocusCamera
-  Views:
-    Current:
-      Class: rviz_default_plugins/TopDownOrtho
-      Name: Current View
-      Target Frame: map
+Views:
+  Current:
+    Name: Current View
+    Class: rviz_default_plugins/TopDownOrtho
+    Target Frame: map
 
