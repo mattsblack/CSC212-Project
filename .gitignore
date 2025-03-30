@@ -1,1 +1,7 @@
 .DS_Store
+#ignore build and log directories
+robot_ws/build/
+robot_ws/log/
+
+**/build/**
+**/log/**
