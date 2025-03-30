@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-# Monkey-patch numpy to restore np.float and np.maximum_sctype if missing.
+#TODO: fix the bug where the map doesn't update properly in RViz
+#also begin implementing path coverage. try getting a screenshot of the map and then computing the free space in the blank map and then comparing it to the map with the path on top. 
+#or find when an algorithm finishes running and after that compute the percentage of the room covered.
+
+# patch numpy to restore np.float and np.maximum_sctype if missing.
 import numpy as np
 if not hasattr(np, "float"):
     np.float = float
