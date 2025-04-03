@@ -1,3 +1,0 @@
-[console_scripts]
-map_path_saver = map_path_saver.map_path_saver:main
-
