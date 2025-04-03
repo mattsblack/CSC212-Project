@@ -1,9 +1,0 @@
-free_thresh: 0.196
-image: saved_map.png
-negate: 0
-occupied_thresh: 0.65
-origin:
-- -5.266235866429066
-- -5.20252488029086
-- 0.0
-resolution: 0.05000000074505806
