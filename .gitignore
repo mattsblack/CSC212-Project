@@ -1,9 +1,9 @@
+#ignore mac files
 .DS_Store
-#ignore build and log directories
-robot_ws/build/
-robot_ws/log/
 
+#ignore build and log directories
 **/build/**
 **/log/**
 
+#ignore vscode folder
 .vscode/
