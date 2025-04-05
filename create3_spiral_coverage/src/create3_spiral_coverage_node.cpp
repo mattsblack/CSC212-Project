@@ -130,17 +130,30 @@ void Create3SpiralCoverageNode::handle_accepted(const std::shared_ptr<GoalHandle
     std::thread{std::bind(&Create3SpiralCoverageNode::execute, this, _1), goal_handle}.detach();
 }
 
+/**
+ * @brief Execute the coverage action
+ *
+ * This method implements the main execution loop for the coverage action.
+ * It runs in a separate thread to avoid blocking the main ROS executor.
+ * The method creates a state machine, feeds it sensor data, and monitors
+ * for cancellation requests or robot kidnapping. It also publishes feedback
+ * when the active behavior changes.
+ *
+ * @param goal_handle Handle to the active goal being executed
+ */
 void Create3SpiralCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal_handle)
 {
     RCLCPP_INFO(this->get_logger(), "Executing goal");
 
+    // Set up control loop rate according to parameter
     rclcpp::Rate loop_rate(m_rate_hz);
     const auto goal = goal_handle->get_goal();
     auto start_time = this->now();
 
     // Check if the robot has reflexes enabled or if we need to manually handle hazards
-    bool robot_has_reflexes = this->reflexes_setup();
+        bool robot_has_reflexes = this->reflexes_setup();
 
+    // Create the state machine that implements the coverage algorithm
     auto state_machine = std::make_unique<SpiralCoverageStateMachine>(
         *goal,
         this->get_clock(),
@@ -154,10 +167,13 @@ void Create3SpiralCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage
     output.state = State::RUNNING;
     bool is_docked = false;
     bool is_kidnapped = false;
+    
+    // Main execution loop - continues until action completes or is cancelled
     do {
-
+        // Prepare data structure with latest sensor readings
         Behavior::Data data;
         {
+            // Use mutex to ensure thread-safe access to sensor data
             std::lock_guard<std::mutex> guard(m_mutex);
 
             data.hazards = m_last_hazards;
@@ -165,6 +181,7 @@ void Create3SpiralCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage
             data.pose = m_last_odom.pose.pose;
             data.opcodes = m_last_opcodes;
 
+            // Clear IR opcode buffer periodically to avoid stale readings
             if (this->now() - m_last_opcodes_cleared_time >= rclcpp::Duration(std::chrono::milliseconds(m_opcodes_buffer_ms))) {
                 m_last_opcodes_cleared_time = this->now();
                 m_last_opcodes.clear();
@@ -187,7 +204,7 @@ void Create3SpiralCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage
             return;
         }
 
-        // Check if the robot is kidnapped
+        // Check if the robot is kidnapped (physically picked up or moved)
         if (is_kidnapped) {
             m_is_running = false;
             state_machine->cancel();
@@ -202,6 +219,8 @@ void Create3SpiralCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage
 
         // Run the state machine!
         output = state_machine->execute(data);
+        
+        // Publish feedback when behavior changes
         if (m_last_behavior != output.current_behavior) {
             auto feedback = std::make_shared<CoverageAction::Feedback>();
             feedback->current_behavior = output.current_behavior;
@@ -209,11 +228,14 @@ void Create3SpiralCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage
             m_last_behavior = output.current_behavior;
         }
 
+        // Maintain control loop rate
         loop_rate.sleep();
+        
     } while (output.state == State::RUNNING && rclcpp::ok());
 
     RCLCPP_INFO(this->get_logger(), "Coverage action terminated");
 
+    // If ROS is still running, send final result
     if (rclcpp::ok()) {
         m_is_running = false;
         auto result = std::make_shared<CoverageAction::Result>();

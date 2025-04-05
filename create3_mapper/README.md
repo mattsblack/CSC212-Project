@@ -12,7 +12,7 @@ ROS2 package for mapping capabilities with the iRobot Create 3 robot. This packa
 2. Clone this repository into your workspace's src folder:
     ```bash
     cd ~/ros2_ws/src
-    git clone https://github.com/mattsblack/CSC212-Project/
+    git clone https://github.com/mattsblack/CSC212-Project.git
     ```
 
 3. Install dependencies:

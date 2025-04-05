@@ -130,17 +130,31 @@ void Create3StraightCoverageNode::handle_accepted(const std::shared_ptr<GoalHand
     std::thread{std::bind(&Create3StraightCoverageNode::execute, this, _1), goal_handle}.detach();
 }
 
+/**
+ * @brief Execute the coverage action
+ *
+ * This method implements the main execution loop for the coverage action.
+ * It runs in a separate thread to avoid blocking the main ROS executor.
+ * The method creates a state machine, feeds it sensor data, and monitors
+ * for cancellation requests or robot kidnapping. It also publishes feedback
+ * when the active behavior changes.
+ *
+ * @param goal_handle Handle to the active goal being executed
+ */
 void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal_handle)
 {
     RCLCPP_INFO(this->get_logger(), "Executing goal");
 
+    // Set up control loop rate according to parameter
     rclcpp::Rate loop_rate(m_rate_hz);
     const auto goal = goal_handle->get_goal();
     auto start_time = this->now();
 
     // Check if the robot has reflexes enabled or if we need to manually handle hazards
+    // Reflexes are built-in safety behaviors that automatically respond to hazards
     bool robot_has_reflexes = this->reflexes_setup();
 
+    // Create the state machine that implements the coverage algorithm
     auto state_machine = std::make_unique<StraightCoverageStateMachine>(
         *goal,
         this->get_clock(),
@@ -154,10 +168,13 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
     output.state = State::RUNNING;
     bool is_docked = false;
     bool is_kidnapped = false;
+    
+    // Main execution loop - continues until action completes or is cancelled
     do {
-
+        // Prepare data structure with latest sensor readings
         Behavior::Data data;
         {
+            // Use mutex to ensure thread-safe access to sensor data
             std::lock_guard<std::mutex> guard(m_mutex);
 
             data.hazards = m_last_hazards;
@@ -165,6 +182,8 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
             data.pose = m_last_odom.pose.pose;
             data.opcodes = m_last_opcodes;
 
+            // Clear IR opcode buffer periodically to avoid stale readings
+            // This prevents the robot from reacting to IR signals that are no longer present
             if (this->now() - m_last_opcodes_cleared_time >= rclcpp::Duration(std::chrono::milliseconds(m_opcodes_buffer_ms))) {
                 m_last_opcodes_cleared_time = this->now();
                 m_last_opcodes.clear();
@@ -174,7 +193,7 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
             is_docked = m_last_dock.is_docked;
         }
 
-        // Check if there is a cancel request
+        // Check if there is a cancel request and handle it immediately if present
         if (goal_handle->is_canceling()) {
             m_is_running = false;
             state_machine->cancel();
@@ -187,7 +206,8 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
             return;
         }
 
-        // Check if the robot is kidnapped
+        // Check if the robot is kidnapped (physically picked up or moved)
+        // Abort immediately to ensure safety and to prevent erroneous behavior
         if (is_kidnapped) {
             m_is_running = false;
             state_machine->cancel();
@@ -200,8 +220,10 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
             return;
         }
 
-        // Run the state machine!
+        // Run one cycle of the state machine
         output = state_machine->execute(data);
+        
+        // Publish feedback when behavior changes to inform action clients
         if (m_last_behavior != output.current_behavior) {
             auto feedback = std::make_shared<CoverageAction::Feedback>();
             feedback->current_behavior = output.current_behavior;
@@ -209,11 +231,14 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
             m_last_behavior = output.current_behavior;
         }
 
+        // Maintain control loop rate for consistent execution timing
         loop_rate.sleep();
+        
     } while (output.state == State::RUNNING && rclcpp::ok());
 
     RCLCPP_INFO(this->get_logger(), "Coverage action terminated");
 
+    // If ROS is still running, send final result
     if (rclcpp::ok()) {
         m_is_running = false;
         auto result = std::make_shared<CoverageAction::Result>();
@@ -228,10 +253,20 @@ void Create3StraightCoverageNode::execute(const std::shared_ptr<GoalHandleCovera
     }
 }
 
+/**
+ * @brief Set up and verify robot reflexes configuration
+ *
+ * Queries the robot's parameter server to determine if built-in safety reflexes
+ * are properly configured and active. These reflexes include automatic responses
+ * to bumps, cliff detections, and wheel drops.
+ *
+ * @return bool True if robot has reflexes enabled, false otherwise
+ */
 bool Create3StraightCoverageNode::reflexes_setup()
 {
     bool robot_has_reflexes = true;
 
+    // Parameter names for the different reflex settings
     const std::vector<std::string> param_names = {
         "reflexes.REFLEX_BUMP",
         "reflexes.REFLEX_CLIFF",
@@ -239,48 +274,47 @@ bool Create3StraightCoverageNode::reflexes_setup()
         "reflexes_enabled"
     };
 
-    // Check if reflexes are active
+    // Check if reflexes are active by querying the parameter service
     auto get_params_future = m_reflexes_param_client->get_parameters(param_names);
     auto parameters = get_params_future.get();
     bool all_enabled = true;
     bool all_disabled = true;
+    
+    // Analyze parameter results to determine if reflexes are enabled
     for (const rclcpp::Parameter& param : parameters) {
         all_enabled = all_enabled && param.as_bool();
         all_disabled = all_disabled && !param.as_bool();
     }
 
+    // Log the reflex status based on parameter values
     if (all_enabled) {
         robot_has_reflexes = true;
         RCLCPP_INFO(this->get_logger(), "Reflexes are enabled on the robot!");
     } else if (all_disabled) {
         robot_has_reflexes = false;
-        RCLCPP_INFO(this->get_logger(), "Reflexes are disabled on the robot!");
+        RCLCPP_WARN(this->get_logger(), "Reflexes are disabled on the robot!");
     } else {
-        // If some reflexes are enabled and some are disabled, activate them all.
-        RCLCPP_WARN(this->get_logger(), "Some reflexes were disabled, activating all of them");
-        std::vector<rclcpp::Parameter> parameters;
-        for (const std::string & name : param_names) {
-            parameters.push_back(rclcpp::Parameter(name, true));
-        }
-        auto set_params_future = m_reflexes_param_client->set_parameters(parameters);
-        auto results = set_params_future.get();
-        bool success = true;
-        for (const rcl_interfaces::msg::SetParametersResult& res : results) {
-            success = success && res.successful;
-        }
-
-        if (!success) {
-            throw std::runtime_error{"Unable to activate required parameters"};
-        }
-        robot_has_reflexes = true;
+        robot_has_reflexes = false;
+        RCLCPP_ERROR(this->get_logger(), "Reflex setup is inconsistent!");
     }
 
     return robot_has_reflexes;
 }
 
+/**
+ * @brief Check if the node is ready to start coverage
+ *
+ * This function performs a comprehensive check to verify that all required
+ * communication channels with the robot are fully established before starting
+ * a coverage operation. This includes checking that publishers, subscribers,
+ * action clients, and parameter services are connected and ready.
+ *
+ * @return bool True if all required connections are established, false otherwise
+ */
 bool Create3StraightCoverageNode::ready_to_start()
 {
-
+    // Check that all subscriptions have discovered their publishers
+    // This ensures we're receiving all necessary sensor data
     if (m_dock_subscription->get_publisher_count() == 0 ||
         m_hazards_subscription->get_publisher_count() == 0 ||
         m_ir_opcode_subscription->get_publisher_count() == 0 ||
@@ -291,16 +325,22 @@ bool Create3StraightCoverageNode::ready_to_start()
         return false;
     }
 
+    // Check that our velocity publisher has discovered subscribers
+    // This ensures the robot will receive our movement commands
     if (m_cmd_vel_publisher->get_subscription_count() == 0) {
         RCLCPP_WARN(this->get_logger(), "Some publishers haven't discovered their subscriptions yet");
         return false;
     }
 
+    // Check that parameter services are ready
+    // This allows us to query or set robot parameters like reflexes
     if (!m_reflexes_param_client->service_is_ready()) {
         RCLCPP_WARN(this->get_logger(), "Some parameters servers are not ready yet");
         return false;
     }
 
+    // Check that action servers for docking/undocking are ready
+    // This ensures we can send dock and undock commands to the robot
     if (!m_dock_action_client->action_server_is_ready() ||
         !m_undock_action_client->action_server_is_ready())
     {
@@ -309,6 +349,7 @@ bool Create3StraightCoverageNode::ready_to_start()
     }
 
     // We must know if the robot is docked or not before starting the behavior
+    // This is critical for selecting the initial behavior
     if (!m_dock_msgs_received) {
         RCLCPP_WARN(this->get_logger(), "Didn't receive a dock message yet");
         return false;

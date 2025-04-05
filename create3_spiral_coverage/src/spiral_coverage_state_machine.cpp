@@ -210,8 +210,21 @@ void SpiralCoverageStateMachine::select_next_behavior(const Behavior::Data& data
     }
 }
 
+/**
+ * @brief Compute a new rotation angle for obstacle avoidance
+ *
+ * This function generates a rotation angle that avoids previously tried directions
+ * when the robot encounters obstacles repeatedly. It keeps track of previously
+ * attempted orientations and ensures the new target orientation is significantly
+ * different to prevent the robot from getting stuck in cycles.
+ *
+ * @param pose Current robot pose containing orientation information
+ * @param resolution Minimum angular difference (in radians) between attempts
+ * @return double Target rotation angle in radians
+ */
 double SpiralCoverageStateMachine::compute_evade_rotation(const geometry_msgs::msg::Pose& pose, double resolution)
 {
+    // Extract current orientation as quaternion and convert to Euler angles
     tf2::Quaternion current_orientation;
     tf2::convert(pose.orientation, current_orientation);
 
@@ -225,7 +238,7 @@ double SpiralCoverageStateMachine::compute_evade_rotation(const geometry_msgs::m
     // Eventually, if we failed too many times, return an orientation regardless of how different it is
     // from previous attempts.
     while (i < 100) {
-        // Generate a new, random, target orientation
+        // Generate a new, random, target orientation between -π and π
         double random_num = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
         double random_angle = random_num * 2 * M_PI - M_PI;
         target_orientation.setRPY(0.0, 0.0, random_angle);
@@ -233,11 +246,15 @@ double SpiralCoverageStateMachine::compute_evade_rotation(const geometry_msgs::m
         // Check if the random orientation is different enough from past evade attempts
         bool valid_target = true;
         for (double angle : m_evade_attempts) {
+            // Create quaternion from previously attempted angle
             tf2::Quaternion attempt_orientation;
             attempt_orientation.setRPY(0.0, 0.0, angle);
 
+            // Calculate relative rotation between new target and previous attempt
             tf2::Quaternion relative_orientation = target_orientation * attempt_orientation.inverse();
             double relative_yaw = tf2::getYaw(relative_orientation);
+            
+            // If new target is too similar to a previous attempt, reject it
             if (std::abs(relative_yaw) < std::abs(resolution)) {
                 valid_target = false;
                 break;
@@ -251,6 +268,7 @@ double SpiralCoverageStateMachine::compute_evade_rotation(const geometry_msgs::m
         i++;
     }
 
+    // Calculate the relative rotation needed from current orientation to target orientation
     tf2::Quaternion relative_orientation = target_orientation * current_orientation.inverse();
     double relative_yaw_rotation = tf2::getYaw(relative_orientation);
     return relative_yaw_rotation;

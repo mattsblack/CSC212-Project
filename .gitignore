@@ -5,3 +5,5 @@ robot_ws/log/
 
 **/build/**
 **/log/**
+
+.vscode
