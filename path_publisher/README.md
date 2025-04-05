@@ -15,22 +15,26 @@ Path Publisher is a ROS2 package designed to publish predefined paths for robot 
 ## Installation
 
 1. Navigate to your ROS2 workspace source directory:
+
     ```bash
     cd ~/your_ros_workspace/src
     ```
 
 2. Clone the repository:
+
     ```bash
     git clone https://github.com/mattsblack/CSC212-Project.git
     ```
 
 3. Build the package:
+
     ```bash
     cd ..
     colcon build
     ```
 
 4. Source the workspace:
+
     ```bash
     source install/setup.bash
     ```
@@ -38,6 +42,7 @@ Path Publisher is a ROS2 package designed to publish predefined paths for robot 
 ## Setup
 
 1. Configure path parameters in the config file (if applicable):
+
     ```bash
     nano path_publisher/config/paths.yaml
     ```
@@ -61,6 +66,7 @@ ros2 launch path_publisher path_publisher.launch.py
 ## Topics
 
 The package publishes to the following topics:
+
 - `/path` - The generated path (nav_msgs/Path)
 
 ## Parameters

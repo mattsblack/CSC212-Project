@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+ * @file create3_mapper.py
+ * @author Matthew Black
+ * @date 2025-04-05
+ * 
+ * @copyright Copyright (c) 2025
+"""
+
 #TODO: fix the bug where the map doesn't update properly in RViz
 #also begin implementing path coverage. try getting a screenshot of the map and then computing the free space in the blank map and then comparing it to the map with the path on top. 
 #or find when an algorithm finishes running and after that compute the percentage of the room covered.

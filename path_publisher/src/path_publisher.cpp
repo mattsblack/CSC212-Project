@@ -1,3 +1,12 @@
+/**
+ * @file path_publisher.cpp
+ * @author Matthew Black
+ * @date 2025-04-05
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
+
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
