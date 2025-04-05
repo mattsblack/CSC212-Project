@@ -1,8 +1,12 @@
 # Enhancing Roomba Navigation: A Comparative Study of Pathfinding Algorithms
 ## Objectives
-The goal of this project is to compare two pathfinding algorithms and analyze their coverage and time efficiency.
-## Getting started
+This project aims to enhance the efficiency of Roomba robots in real-world settings by comparing the performance of different algorithms. The research uses pre-existing pathfinding algorithms for the iRobot Create 3 to implement a coverage measuring system. A comparative analysis will be conducted, measuring and evaluating key factors such as coverage, time consumption, and overall efficiency of each algorithm.
 
+A primary focus for this project is simultaneous localization and mapping (SLAM), a technique that enables a robot to create and update a map of an unknown environment while simultaneously keeping track of its position. We will utilize LiDAR technology installed on iRobot Create 3 and a Raspberry Pi 4 running ROS2 to implement a system that creates a map of the room covered and records the robot’s path. These maps will be generated using software designed for mapping and visualization.
+
+The generated maps are then analyzed, and the data recorded is compared to identify algorithms that provide more comprehensive coverage. We anticipate that this research will contribute to creating a more systematic approach to analyzing pathfinding strategies, reaching beyond the algorithms used in the comparative analysis in this study. The results of this project will potentially be used in more informed decision-making in the selection of algorithms for autonomous consumer-grade vacuuming robots used in diverse environments.
+
+## Getting started
 You will need:
 - iRobot's Create3 robot
 - Raspberry Pi 4
@@ -91,4 +95,17 @@ This will allow the virtual machine to communicate with the robot.
   </details>
 </details>
 
+## References
+### Publications
+1. R. Gunning, “A performance comparison of coverage algorithms for simple robotic vacuum cleaners,” Dissertation, 2018, https://diva-portal.org/smash/get/diva2:1213970/FULLTEXT02.pdf
+2. Hasan, Kazi Mahmud, et al. “Path planning algorithm development for autonomous vacuum cleaner robots.” 2014 International Conference on Informatics, Electronics &amp; Vision (ICIEV), May 2014, pp. 1–6, https://www.researchgate.net/publication/269297110_Path_planning_algorithm_development_for_autonomous_vacuum_cleaner_robots
+3. Zheng, Kuisong, et al. “Performance metrics for coverage of cleaning robots with MoCap system.” Lecture Notes in Computer Science, 2017, pp. 267–274, https://doi.org/10.1007/978-3-319-65298-6_25
+4. Zhao, Shengmin, and Seung-Hoon Hwang. “Complete Coverage Path Planning Scheme for autonomous Navigation Ros-based robots.” ICT Express, vol. 10, no. 1, Feb. 2024, pp. 83–89, https://doi.org/10.1016/j.icte.2023.06.009
+5. Gabriely, Y., and E. Rimon. “Spanning-tree based coverage of continuous areas by a mobile robot.” Proceedings 2001 ICRA. IEEE International Conference on Robotics and Automation (Cat. No.01CH37164), vol. 2, pp. 1927–1933, https://doi.org/10.1109/robot.2001.932890
 
+### Other Resources
+1. Layton, Julia. “How Robotic Vacuums Work.” HowStuffWorks, HowStuffWorks, 3 Nov. 2005, https://electronics.howstuffworks.com/gadgets/home/robotic-vacuum.htm
+2. “Navigation Technology.” iRobot, 23 Aug. 2024, https://homesupport.irobot.com/s/article/31056#:~:text=Robots%20that%20use%20iAdapt%C2%AE%201.0%20Navigation%20Technology%20utilize%20a,on%20a%20single%20battery%20charge
+3. “Why Your Roomba Takes a Weird Path to Keep Your Floors Clean.” CNET, www.cnet.com/home/kitchen-and-household/this-is-why-your-roombas-random-patterns-actually-make-perfect-sense/
+4. Olson, Jon, et al. “Simple Mapping and Path-Planning with the Roomba”, 2008, pp. 1–4., https://joosm.github.io/RIP2014/material/pastprojects/RIP08_JohnJonIvan.pdf
+5. Kapoutsis, Athanasios. “DARP: Divide Areas Algorithm for Optimal Multi-Robot Coverage Path Planning”, Medium, 1 Sep. 2021, https://medium.com/@athanasios.kapoutsis/darp-divide-areas-algorithm-for-optimal-multi-robot-coverage-path-planning-2fed77b990a3
