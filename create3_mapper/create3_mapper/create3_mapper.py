@@ -34,6 +34,7 @@ from visualization_msgs.msg import Marker
 from builtin_interfaces.msg import Time
 from tf2_ros import TransformBroadcaster, Buffer, TransformListener
 from rclpy.qos import QoSProfile, ReliabilityPolicy
+from rclpy.time import Time
 import tf_transformations
 import numpy as np
 
@@ -87,7 +88,7 @@ class Create3Mapper(Node):
         self.br = TransformBroadcaster(self)
 
         # Timer to output coverage stats every 5 seconds.
-        self.timer_output = self.create_timer(5.0, self.print_coverage)
+        """ self.timer_output = self.create_timer(5.0, self.print_coverage)"""
 
     def odom_callback(self, msg: Odometry):
         """
@@ -113,9 +114,11 @@ class Create3Mapper(Node):
         self.path_points.append((x, y))
         
         # Limit path history to prevent memory issues with long runs
+        # removed for now
+        """
         if len(self.path_points) > 2000:
             self.path_points.pop(0)
-
+        """
         # Publish the line strip marker (robot path) using the latest odom header stamp.
         self.publish_path_marker(msg.header.stamp)
         # Compute and broadcast transforms: map->base_footprint and map->laser_frame.
@@ -133,7 +136,7 @@ class Create3Mapper(Node):
         """
         self.latest_map = msg
 
-    def publish_path_marker(self, stamp: Time):
+    def publish_path_marker(self, stamp):
         """
         Create and publish a visualization marker showing the robot's path.
         
@@ -154,11 +157,14 @@ class Create3Mapper(Node):
         marker.type = Marker.LINE_STRIP
         marker.action = Marker.ADD
         marker.scale.x = 0.03  # Line width.
-        # Set color to lime green.
+        # Set color to blue.
         marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
+        marker.color.g = 0.0
+        marker.color.b = 1.0
         marker.color.a = 1.0
+
+        # initialize marker point list explicitly
+        marker.points = []
 
         # Convert stored path points into marker points
         for (px, py) in self.path_points:
