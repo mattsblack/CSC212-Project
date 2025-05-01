@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['max_5fdistance_0',['max_distance',['../structcreate3__spiral__coverage_1_1DriveStraightBehavior_1_1Config.html#afb00e5ffe3732f19fba9cbae8193bdf4',1,'create3_spiral_coverage::DriveStraightBehavior::Config::max_distance'],['../structcreate3__straight__coverage_1_1DriveStraightBehavior_1_1Config.html#a2e4c0142795d428b54e3dcc59fc309e1',1,'create3_straight_coverage::DriveStraightBehavior::Config::max_distance']]],
+  ['max_5fhazard_5fretries_1',['max_hazard_retries',['../structcreate3__spiral__coverage_1_1RotateBehavior_1_1Config.html#a412e51cd488fd661bbbb52ff78d7b332',1,'create3_spiral_coverage::RotateBehavior::Config::max_hazard_retries'],['../structcreate3__straight__coverage_1_1RotateBehavior_1_1Config.html#ad36352fd8eecaaba4dac61828e8bc87b',1,'create3_straight_coverage::RotateBehavior::Config::max_hazard_retries']]],
+  ['min_5fdistance_2',['min_distance',['../structcreate3__spiral__coverage_1_1DriveStraightBehavior_1_1Config.html#a587d07907d9a890638ffbc69550df81f',1,'create3_spiral_coverage::DriveStraightBehavior::Config::min_distance'],['../structcreate3__straight__coverage_1_1DriveStraightBehavior_1_1Config.html#ab8b6b6b4366ee9e85bd4287320664b9e',1,'create3_straight_coverage::DriveStraightBehavior::Config::min_distance']]]
+];

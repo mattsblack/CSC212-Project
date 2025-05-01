@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['radius_5fincrement_0',['radius_increment',['../structcreate3__spiral__coverage_1_1SpiralBehavior_1_1Config.html#acb85ca47e87c04f7c7956a3f3f8ffd05',1,'create3_spiral_coverage::SpiralBehavior::Config::radius_increment'],['../structcreate3__straight__coverage_1_1SpiralBehavior_1_1Config.html#a2192188c146c90019c81eee31d4b98ff',1,'create3_straight_coverage::SpiralBehavior::Config::radius_increment']]],
+  ['radius_5fincrement_5finterval_1',['radius_increment_interval',['../structcreate3__spiral__coverage_1_1SpiralBehavior_1_1Config.html#a784e91b186c455b1dd7ef0c2bae96c32',1,'create3_spiral_coverage::SpiralBehavior::Config::radius_increment_interval'],['../structcreate3__straight__coverage_1_1SpiralBehavior_1_1Config.html#ab18b58ffec94469f1915288942692a43',1,'create3_straight_coverage::SpiralBehavior::Config::radius_increment_interval']]],
+  ['robot_5fhas_5freflexes_2',['robot_has_reflexes',['../structcreate3__spiral__coverage_1_1RotateBehavior_1_1Config.html#abfc5f188dc1062d9a6defb5516042c7e',1,'create3_spiral_coverage::RotateBehavior::Config::robot_has_reflexes'],['../structcreate3__straight__coverage_1_1RotateBehavior_1_1Config.html#a6a499609df432c9de1ddafdd35d1822a',1,'create3_straight_coverage::RotateBehavior::Config::robot_has_reflexes']]]
+];
