@@ -39,13 +39,13 @@ Next, follow the [Create3 LiDAR SLAM example setup instructions](https://github.
 <details>
   <summary>Important info for Apple Silicon Mac users (click to expand)</summary>
   <br>
-If you are using Apple Silicon, you must install Ubuntu 22.04 in a virtual machine. 
+If you are using Apple Silicon, you must install Ubuntu 22.04 in a virtual machine.
 
 Download the 64-bit ARMv8 version of Ubuntu 22.04 server [here](https://cdimage.ubuntu.com/releases/22.04/release/).
 
 Set up the virtual machine using your VM Software (this example uses UTM).
 
-Make sure to set the networking mode to **Bridged (Advanced)**, and the Bridged Interface to **Automatic**. 
+Make sure to set the networking mode to **Bridged (Advanced)**, and the Bridged Interface to **Automatic**.
 
 This will allow the virtual machine to communicate with the robot.
   <details>
@@ -59,7 +59,6 @@ This will allow the virtual machine to communicate with the robot.
   
   <img width="444" alt="image" src="https://github.com/user-attachments/assets/710ea1f9-b1c6-4111-a7aa-3643e5c06a1b" />
 
-  
   Then under "Preconfigured" click on "Linux"
   
   <img width="438" alt="image" src="https://github.com/user-attachments/assets/f9d6fbe0-a2cc-4b3e-8b39-2aed1c0b77b2" />
@@ -84,7 +83,7 @@ This will allow the virtual machine to communicate with the robot.
 
   Next, boot into the VM run `sudo apt update && sudo apt upgrade` and then `sudo apt install ubuntu-desktop`. Then type reboot and load the VM. It should now load the desktop login page.
 
-  Next, shut down the VM, right click and select "Edit" 
+  Next, shut down the VM, right click and select "Edit"
   
   <img width="297" alt="image" src="https://github.com/user-attachments/assets/8e53d200-d1b8-43f3-8d41-11c21a2b506e" />
 
