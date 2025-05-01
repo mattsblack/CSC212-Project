@@ -29,7 +29,7 @@ You will need:
 
 First, follow the [Create3 instructions](https://iroboteducation.github.io/create3_docs/setup/pi4humble/) to set up Ubuntu on the Raspberry Pi.
 
-Next, follow the [Create3 LiDAR SLAM example setup instructions](https://github.com/iRobotEducation/create3_examples/tree/humble/create3_lidar_slam) to set up the robot and the Raspberry Pi.
+Next, follow the [Create3 LiDAR SLAM example setup instructions](https://github.com/iRobotEducation/create3_examples/tree/humble/create3_lidar_slam#sbc-setup) to set up the robot and the Raspberry Pi.
 
 ### Computer setup
 
@@ -98,6 +98,10 @@ This will allow the virtual machine to communicate with the robot.
 
   </details>
 </details>
+
+After setting up the VM, follow the [iRobot ROS2 Ubuntu install instructions](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) to set up Ubuntu on your virtual machine.
+
+Follow the [instructions](https://github.com/iRobotEducation/create3_examples/tree/humble/create3_lidar_slam#computer-setup) to set up the `create3_lidar_slam` package on your virtual machine. This package is used in the real-time approach.
 
 ## Project structure
 
