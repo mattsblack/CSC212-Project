@@ -125,16 +125,24 @@ Setup for the real-time approach is located in these folders:
 
 ### Publications
 
-1. R. Gunning, “A performance comparison of coverage algorithms for simple robotic vacuum cleaners,” Dissertation, 2018, <https://diva-portal.org/smash/get/diva2:1213970/FULLTEXT02.pdf>
-2. Hasan, Kazi Mahmud, et al. “Path planning algorithm development for autonomous vacuum cleaner robots.” 2014 International Conference on Informatics, Electronics &amp; Vision (ICIEV), May 2014, pp. 1–6, <https://www.researchgate.net/publication/269297110_Path_planning_algorithm_development_for_autonomous_vacuum_cleaner_robots>
-3. Zheng, Kuisong, et al. “Performance metrics for coverage of cleaning robots with MoCap system.” Lecture Notes in Computer Science, 2017, pp. 267–274, <https://doi.org/10.1007/978-3-319-65298-6_25>
-4. Zhao, Shengmin, and Seung-Hoon Hwang. “Complete Coverage Path Planning Scheme for autonomous Navigation Ros-based robots.” ICT Express, vol. 10, no. 1, Feb. 2024, pp. 83–89, <https://doi.org/10.1016/j.icte.2023.06.009>
-5. Gabriely, Y., and E. Rimon. “Spanning-tree based coverage of continuous areas by a mobile robot.” Proceedings 2001 ICRA. IEEE International Conference on Robotics and Automation (Cat. No.01CH37164), vol. 2, pp. 1927–1933, <https://doi.org/10.1109/robot.2001.932890>
+1. Cheng, R., Hong, W., Li, J., & Lin, K. W. (2019). Indoor Positioning and path Planning Platform for iRobot create 2 sweeping robot. Advances in Science Technology and Engineering Systems Journal, 4(3), 198–206. Retrieved April 25, 2025, from <https://www.astesj.com/publications/ASTESJ_040327.pdf>
+2. Choset, H., & Pignon, P. (1998). Coverage Path planning: The Boustrophedon Cellular Decomposition. In Field and Service Robotics (pp. 203–209). Retrieved April 23, 2025, from <https://www.ri.cmu.edu/pub_files/pub4/choset_howie_1997_3/choset_howie_1997_3.pdf>
+3. Gunning, R. (2018). A performance comparison of coverage algorithms for simple robotic vacuum cleaners [PhD dissertation, KTH Royal Institute of Technology]. <https://diva-portal.org/smash/get/diva2:1213970/FULLTEXT02.pdf>
+4. Hasan, K. M., Abdullah-Al-Nahid, N., & Reza, K. J. (2014). Path planning algorithm development for autonomous vacuum cleaner robots. In International Conference on Informatics, Electronics & Vision (ICIEV) (pp. 1–6). <https://www.researchgate.net/publication/269297110_Path_planning_algorithm_development_for_autonomous_vacuum_cleaner_robots269297110_Path_planning_algorithm_development_for_autonomous_vacuum_cleaner_robots>
+5. Macenski, S., & Jambrecic, I. (2021). SLAM Toolbox: SLAM for the dynamic world. The Journal of Open Source Software, 6(61), 2783. <https://doi.org/10.21105/joss.02783>
+6. Olson, J., Kirillov, I., & Sweeney, J. (2008). Simple Mapping and Path-planning with the Roomba. Retrieved April 25, 2025, from <https://joosm.github.io/RIP2014/material/pastprojects/RIP08_JohnJonIvan.pdf>
+7. Zhao, S., & Hwang, S. (2023). Complete coverage path planning scheme for autonomous navigation ROS-based robots. ICT Express, 10(1), 83–89. Retrieved Apr. 23, 2025, from <https://www.sciencedirect.com/science/article/pii/S2405959523000796?via%3Dihub>
+8. Zheng, K., Chen, G., Cui, G., Chen, Y., Wu, F., & Chen, X. (2017). Performance Metrics for Coverage of Cleaning Robots with MoCap System. In Lecture notes in computer science (pp. 267–274). <https://doi.org/10.1007/978-3-319-65298-6_25>
+9. Gabriely, Y., and E. Rimon. “Spanning-tree based coverage of continuous areas by a mobile robot.” Proceedings 2001 ICRA. IEEE International Conference on Robotics and Automation (Cat. No.01CH37164), vol. 2, pp. 1927–1933, <https://doi.org/10.1109/robot.2001.932890>
 
 ### Other Resources
 
-1. Layton, Julia. “How Robotic Vacuums Work.” HowStuffWorks, HowStuffWorks, 3 Nov. 2005, <https://electronics.howstuffworks.com/gadgets/home/robotic-vacuum.htm>
-2. “Navigation Technology.” iRobot, 23 Aug. 2024, <https://homesupport.irobot.com/s/article/31056#:~:text=Robots%20that%20use%20iAdapt%C2%AE%201.0%20Navigation%20Technology%20utilize%20a,on%20a%20single%20battery%20charge>
-3. “Why Your Roomba Takes a Weird Path to Keep Your Floors Clean.” CNET, <www.cnet.com/home/kitchen-and-household/this-is-why-your-roombas-random-patterns-actually-make-perfect-sense/>
-4. Olson, Jon, et al. “Simple Mapping and Path-Planning with the Roomba”, 2008, pp. 1–4., <https://joosm.github.io/RIP2014/material/pastprojects/RIP08_JohnJonIvan.pdf>
-5. Kapoutsis, Athanasios. “DARP: Divide Areas Algorithm for Optimal Multi-Robot Coverage Path Planning”, Medium, 1 Sep. 2021, <https://medium.com/@athanasios.kapoutsis/darp-divide-areas-algorithm-for-optimal-multi-robot-coverage-path-planning-2fed77b990a3>
+1. Bennett, B. (2021, August 27). Why your roomba takes a weird path to keep your floors clean. This is why your Roomba’s random patterns actually make perfect sense. <https://www.cnet.com/home/kitchen-and-household/this-is-why-your-roombas-random-patterns-actually-make-perfect-sense/>
+2. iRobot. (2025, April 15). Navigation Technology. iRobot Knowledge. Retrieved April 23, 2025, from <https://homesupport.irobot.com/s/article/31056#:~:text=Robots%20that%20use%20iAdapt%C2%AE%201.0%20Navigation%20Technology%20utilize%20a,on%20a%20single%20battery%20charge>
+3. Layton, J. (2005, November 3). How robotic vacuums work. HowStuffWorks. <https://electronics.howstuffworks.com/gadgets/home/robotic-vacuum.htm>
+4. Lopez, D. G., Browmy, & Fernández-Laguilhoat, E. (2021, March 18). Danigarcialopez/ros2_explorer: In this repo we use Turtlebot 3 along with Ros 2 and gazebo to explore an unknown CSV environment, navigate through it and create a map. GitHub. <https://github.com/DaniGarciaLopez/ros2_explorer/tree/main>
+5. Maher, L., & Rahman, I. (2024). Zigzag Scanline Algorithm. Retrieved April 23, 2025, from <https://github.com/vinzmoke-zoro/Zigzag-Scanline-Algorithm>
+6. Soragna, A., Kearns, J., & Shamlian, S. (2024). iRobot® Create® 3 Coverage. iRobot. Retrieved April 23, 2025, from <https://github.com/iRobotEducation/create3_examples/tree/humble/create3_coverage>
+7. Soragna, A., Shamlian, S., Kearns, J., & Dorich, J. (2022). iRobot® Create® Platform interfaces. iRobot. (2022). Retrieved April 25, 2025, from <https://github.com/iRobotEducation/irobot_create_msgs>
+8. Sutton, N., & De Leon, R. (2024). Hilbert Curve for ROS 2 Robots. Retrieved April 23, 2025, from <https://github.com/NaeemSutton/Hilbert-Curve-for-ROS-2-Robots>
+9. visualization_msgs — visualization_msgs 4.8.0 documentation. (n.d.). <https://docs.ros.org/en/humble/p/visualization_msgs/>
