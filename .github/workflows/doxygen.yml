@@ -28,5 +28,3 @@ jobs:
         with:
           deploy_key: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/html
-          # Optional settings:
-          # keep_files: true
